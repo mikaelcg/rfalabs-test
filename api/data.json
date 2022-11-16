@@ -1,0 +1,22 @@
+{
+  "cards":[
+    {
+      "id":1,
+      "description":"Card 1"
+    },
+    {
+      "id":2,
+      "description":"Card 2"
+    }
+  ],
+  "applicants": [
+    {
+      "id":1,
+      "description":"Applicant 1"
+    },
+    {
+      "id":2,
+      "description":"Applicant 2"
+    }
+  ]
+}
