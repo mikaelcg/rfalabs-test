@@ -1,4 +1,5 @@
 import styles from './app-bar.module.scss';
+import logo from '../../assets/logo.png';
 import {
   Box,
   useColorModeValue,
@@ -23,12 +24,7 @@ export function AppBar(props: AppBarProps) {
       align="center"
     >
       <Box p={4}>
-        <Image
-          boxSize="100px"
-          objectFit="contain"
-          src="../../assets/logo.png"
-          alt="RFA"
-        />
+        <Image boxSize="100px" objectFit="contain" src={logo} alt="RFA" />
       </Box>
 
       <Box p={4}>
