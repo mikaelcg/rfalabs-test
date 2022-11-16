@@ -1,4 +1,5 @@
 import { AppBar, InsightsBar, Sidebar } from '@rfalabs-test/common-ui';
+
 import {
   Flex,
   Text,
