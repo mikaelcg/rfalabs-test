@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rfalabs-test/common-ui": ["libs/common-ui/src/index.ts"]
+      "@rfalabs-test/common-ui": ["libs/common-ui/src/index.ts"],
+      "@rfalabs-test/http": ["libs/http/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
