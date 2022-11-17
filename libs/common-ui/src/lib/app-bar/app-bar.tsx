@@ -43,35 +43,41 @@ export function AppBar(props: AppBarProps) {
   };
 
   return (
-    <Flex
-      bg={useColorModeValue('gray.100', 'gray.900')}
-      w="100%"
-      color="grey"
-      justify="flex-start"
-      align="center"
-    >
-      <Box p={4}>
-        <Image boxSize="100px" objectFit="contain" src={logo} alt="RFA" />
-      </Box>
+    <div className={styles['container']}>
+      <Flex
+        bg={useColorModeValue('gray.100', 'gray.900')}
+        w="100%"
+        color="grey"
+        justify="flex-start"
+        align="center"
+      >
+        <Box p={4}>
+          <Image boxSize="100px" objectFit="contain" src={logo} alt="RFA" />
+        </Box>
 
-      <Box w="100%">
-        <Tabs
-          size="lg"
-          variant="enclosed"
-          onChange={(index) => onChangeTab(index)}
-        >
-          <TabList>
-            {tabs.map((tab) => {
-              return <Tab key={tab.id}>{tab.label}</Tab>;
-            })}
-          </TabList>
-        </Tabs>
-      </Box>
+        <Box w="100%">
+          <Tabs
+            size="lg"
+            variant="enclosed"
+            onChange={(index) => onChangeTab(index)}
+          >
+            <TabList>
+              {tabs.map((tab) => {
+                return (
+                  <Tab bg="white" key={tab.id}>
+                    {tab.label}
+                  </Tab>
+                );
+              })}
+            </TabList>
+          </Tabs>
+        </Box>
 
-      <Box p={4} marginLeft="auto">
-        <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-      </Box>
-    </Flex>
+        <Box p={4} marginLeft="auto">
+          <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+        </Box>
+      </Flex>
+    </div>
   );
 }
 

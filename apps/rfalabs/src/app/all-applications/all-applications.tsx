@@ -22,6 +22,7 @@ export interface AllApplicationsProps {}
 export interface Applications {
   id: number;
   description: string;
+  date: string;
 }
 
 export function AllApplications(props: AllApplicationsProps) {
@@ -60,6 +61,7 @@ export function AllApplications(props: AllApplicationsProps) {
               <Tr>
                 <Th>ID</Th>
                 <Th>Description</Th>
+                <Th>Date</Th>
                 <Th isNumeric>Actions</Th>
               </Tr>
             </Thead>
@@ -69,6 +71,7 @@ export function AllApplications(props: AllApplicationsProps) {
                   <Tr key={app.id}>
                     <Td>{app.id}</Td>
                     <Td>{app.description}</Td>
+                    <Td>{app.date}</Td>
                     <Td isNumeric>+</Td>
                   </Tr>
                 );
