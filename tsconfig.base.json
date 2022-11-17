@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@rfalabs-test/common-ui": ["libs/common-ui/src/index.ts"],
-      "@rfalabs-test/http": ["libs/http/src/index.ts"]
+      "@rfalabs-test/contexts": ["libs/contexts/src/index.ts"],
+      "@rfalabs-test/http": ["libs/http/src/index.ts"],
+      "@rfalabs-test/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

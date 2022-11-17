@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom/client';
 import AllApplications from './app/all-applications/all-applications';
 import ApplicationDetail from './app/application-detail/application-detail';
+import { ApplicationProvider, TabsProvider } from '@rfalabs-test/contexts';
 import { StrictMode } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
 root.render(
   <StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <TabsProvider>
+        <ApplicationProvider>
+          <RouterProvider router={router} />
+        </ApplicationProvider>
+      </TabsProvider>
     </ChakraProvider>
   </StrictMode>
 );

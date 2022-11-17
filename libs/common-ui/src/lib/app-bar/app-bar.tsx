@@ -1,6 +1,8 @@
 import styles from './app-bar.module.scss';
 import logo from '../../assets/logo.png';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TabsContext } from '@rfalabs-test/contexts';
+import { TabInterface, ITabsContext } from '@rfalabs-test/types';
 import { useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -17,29 +19,22 @@ import {
 export interface AppBarProps {}
 
 export function AppBar(props: AppBarProps) {
-  const [tabs, setTabs] = useState([
-    {
-      id: 'ALL_APPLICATIONS',
-      route: '/',
-      label: 'All Applications',
-    },
-    {
-      id: 'APPLICATION_1',
-      route: '/applications/1',
-      label: 'Application 01',
-    },
-    {
-      id: 'APPLICATION_2',
-      route: '/applications/2',
-      label: 'Application 02',
-    },
-  ]);
+  const tabs = useContext<ITabsContext | null>(TabsContext);
+
+  console.log(tabs);
+  // const [tabs, setTabs] = useState([
+  //   {
+  //     id: 'ALL_APPLICATIONS',
+  //     route: '/',
+  //     label: 'All Applications',
+  //   },
+  // ]);
 
   const navigate = useNavigate();
 
   const onChangeTab = (index: number) => {
-    const tabPath = tabs[index].route;
-    navigate(tabPath);
+    // const tabPath = tabs[index].route;
+    // navigate(tabPath);
   };
 
   return (
@@ -62,13 +57,13 @@ export function AppBar(props: AppBarProps) {
             onChange={(index) => onChangeTab(index)}
           >
             <TabList>
-              {tabs.map((tab) => {
+              {/* {tabs.map((tab: TabInterface) => {
                 return (
-                  <Tab bg="white" key={tab.id}>
-                    {tab.label}
+                  <Tab bg="white" key={tab?.id}>
+                    {tab?.label}
                   </Tab>
                 );
-              })}
+              })} */}
             </TabList>
           </Tabs>
         </Box>

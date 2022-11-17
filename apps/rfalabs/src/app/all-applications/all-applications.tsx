@@ -1,7 +1,10 @@
 import styles from './all-applications.module.scss';
 import http from '@rfalabs-test/http';
 import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { TabsContext } from '@rfalabs-test/contexts';
+import { TabInterface, ITabsContext } from '@rfalabs-test/types';
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Table,
   Thead,
@@ -14,6 +17,7 @@ import {
   Text,
   Center,
   Spinner,
+  IconButton,
 } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
@@ -28,6 +32,7 @@ export interface Applications {
 export function AllApplications(props: AllApplicationsProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [applications, setApplications] = useState<Applications[]>([]);
+  const tabs = useContext<ITabsContext | null>(TabsContext);
 
   useEffect(() => {
     setLoading(true);
@@ -37,6 +42,19 @@ export function AllApplications(props: AllApplicationsProps) {
       setLoading(false);
     });
   }, []);
+
+  const handleInsertTab = (app: any) => {
+    const tabsAux: TabInterface[] = [];
+
+    const tab = {
+      id: app.id,
+      label: app.description,
+    };
+
+    tabsAux.push(tab);
+
+    tabs?.insertTab?.(tabsAux);
+  };
 
   return (
     <Container
@@ -72,7 +90,13 @@ export function AllApplications(props: AllApplicationsProps) {
                     <Td>{app.id}</Td>
                     <Td>{app.description}</Td>
                     <Td>{app.date}</Td>
-                    <Td isNumeric>+</Td>
+                    <Td isNumeric>
+                      <IconButton
+                        onClick={() => handleInsertTab(app)}
+                        aria-label="Add"
+                        icon={<AddIcon />}
+                      />
+                    </Td>
                   </Tr>
                 );
               })}
