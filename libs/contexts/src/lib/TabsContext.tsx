@@ -14,8 +14,14 @@ export const TabsProvider: FC<Props> = ({ children }) => {
     setTabs([...tabs, tab]);
   }
 
+  function removeTab(index: number) {
+    const tabsAux: TabInterface[] = [...(tabs || [])];
+    tabsAux.splice(index - 1, 1);
+    setTabs(tabsAux);
+  }
+
   return (
-    <TabsContext.Provider value={{ tabs, insertTab }}>
+    <TabsContext.Provider value={{ tabs, insertTab, removeTab }}>
       {children}
     </TabsContext.Provider>
   );

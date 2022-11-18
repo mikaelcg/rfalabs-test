@@ -4,6 +4,7 @@ import { useMemo, useContext } from 'react';
 import { TabsContext } from '@rfalabs-test/contexts';
 import { TabInterface } from '@rfalabs-test/types';
 import { useNavigate } from 'react-router-dom';
+import { SmallCloseIcon } from '@chakra-ui/icons';
 import {
   Box,
   useColorModeValue,
@@ -13,6 +14,7 @@ import {
   Tab,
   Avatar,
   Image,
+  IconButton,
 } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
@@ -22,7 +24,7 @@ export function AppBar(props: AppBarProps) {
   const tabsContext = useContext(TabsContext);
 
   const selectedTabs = useMemo(() => {
-    const tabxAux: TabInterface[] = [
+    const tabsAux: TabInterface[] = [
       {
         id: 0,
         label: 'All Applications',
@@ -31,7 +33,7 @@ export function AppBar(props: AppBarProps) {
       ...(tabsContext?.tabs || []),
     ];
 
-    return tabxAux;
+    return tabsAux;
   }, [tabsContext]);
 
   const navigate = useNavigate();
@@ -39,6 +41,12 @@ export function AppBar(props: AppBarProps) {
   const onChangeTab = (index: number) => {
     const tabPath = selectedTabs?.[index].route;
     navigate(tabPath);
+  };
+
+  const removeTab = (e: any, index: number) => {
+    e.stopPropagation();
+    tabsContext?.removeTab(index);
+    navigate('/');
   };
 
   return (
@@ -65,6 +73,19 @@ export function AppBar(props: AppBarProps) {
                     onClick={() => onChangeTab(index)}
                   >
                     {tab?.label}
+
+                    {tab.id === 0 ? null : (
+                      <div>
+                        <IconButton
+                          variant={'ghost'}
+                          marginLeft={5}
+                          aria-label="Close"
+                          colorScheme={'red'}
+                          onClick={(e) => removeTab(e, index)}
+                          icon={<SmallCloseIcon />}
+                        />
+                      </div>
+                    )}
                   </Tab>
                 );
               })}

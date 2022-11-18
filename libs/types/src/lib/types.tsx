@@ -24,4 +24,5 @@ export interface TabInterface {
 export interface ITabsContext {
   tabs: TabInterface[];
   insertTab(tab: TabInterface): void;
+  removeTab(index: number): void;
 }
