@@ -23,7 +23,7 @@ import {
 /* eslint-disable-next-line */
 export interface AllApplicationsProps {}
 
-export interface Applications {
+export interface Application {
   id: number;
   description: string;
   date: string;
@@ -31,8 +31,8 @@ export interface Applications {
 
 export function AllApplications(props: AllApplicationsProps) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [applications, setApplications] = useState<Applications[]>([]);
-  const tabs = useContext<ITabsContext | null>(TabsContext);
+  const [applications, setApplications] = useState<Application[]>([]);
+  const tabsContext = useContext(TabsContext);
 
   useEffect(() => {
     setLoading(true);
@@ -43,17 +43,22 @@ export function AllApplications(props: AllApplicationsProps) {
     });
   }, []);
 
-  const handleInsertTab = (app: any) => {
-    const tabsAux: TabInterface[] = [];
-
+  const handleInsertTab = (app: Application) => {
     const tab = {
       id: app.id,
       label: app.description,
+      route: `applications/${app.id}`,
     };
 
-    tabsAux.push(tab);
+    const hasTab: boolean =
+      tabsContext?.tabs?.some((tabAux) => tabAux.id === tab.id) || false;
 
-    tabs?.insertTab?.(tabsAux);
+    if (hasTab) {
+      alert('Tab already selected!');
+      return;
+    }
+
+    tabsContext?.insertTab?.(tab);
   };
 
   return (

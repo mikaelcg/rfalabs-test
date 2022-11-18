@@ -1,6 +1,6 @@
 import styles from './app-bar.module.scss';
 import logo from '../../assets/logo.png';
-import { useState, useContext } from 'react';
+import { useMemo, useContext } from 'react';
 import { TabsContext } from '@rfalabs-test/contexts';
 import { TabInterface, ITabsContext } from '@rfalabs-test/types';
 import { useNavigate } from 'react-router-dom';
@@ -19,22 +19,26 @@ import {
 export interface AppBarProps {}
 
 export function AppBar(props: AppBarProps) {
-  const tabs = useContext<ITabsContext | null>(TabsContext);
+  const tabsContext = useContext(TabsContext);
 
-  console.log(tabs);
-  // const [tabs, setTabs] = useState([
-  //   {
-  //     id: 'ALL_APPLICATIONS',
-  //     route: '/',
-  //     label: 'All Applications',
-  //   },
-  // ]);
+  const selectedTabs = useMemo(() => {
+    const tabxAux: TabInterface[] = [
+      {
+        id: 0,
+        label: 'All Applications',
+        route: '/',
+      },
+      ...(tabsContext?.tabs || []),
+    ];
+
+    return tabxAux;
+  }, [tabsContext]);
 
   const navigate = useNavigate();
 
   const onChangeTab = (index: number) => {
-    // const tabPath = tabs[index].route;
-    // navigate(tabPath);
+    const tabPath = selectedTabs?.[index].route;
+    navigate(tabPath);
   };
 
   return (
@@ -57,13 +61,13 @@ export function AppBar(props: AppBarProps) {
             onChange={(index) => onChangeTab(index)}
           >
             <TabList>
-              {/* {tabs.map((tab: TabInterface) => {
+              {selectedTabs?.map((tab) => {
                 return (
                   <Tab bg="white" key={tab?.id}>
                     {tab?.label}
                   </Tab>
                 );
-              })} */}
+              })}
             </TabList>
           </Tabs>
         </Box>

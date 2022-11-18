@@ -10,11 +10,12 @@ export interface IApplicationContext {
 }
 
 export interface TabInterface {
-  id?: number;
-  label?: string;
+  id: number;
+  label: string;
+  route: string;
 }
 
 export interface ITabsContext {
-  tabs?: TabInterface[];
-  insertTab?: (tab: TabInterface[]) => void;
+  tabs: TabInterface[];
+  insertTab(tab: TabInterface): void;
 }

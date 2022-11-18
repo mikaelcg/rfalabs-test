@@ -10,9 +10,9 @@ interface Props {
 export const TabsProvider: FC<Props> = ({ children }) => {
   const [tabs, setTabs] = useState<TabInterface[]>([]);
 
-  const insertTab = (v: any) => {
-    setTabs(v);
-  };
+  function insertTab(tab: TabInterface) {
+    setTabs([...tabs, tab]);
+  }
 
   return (
     <TabsContext.Provider value={{ tabs, insertTab }}>
