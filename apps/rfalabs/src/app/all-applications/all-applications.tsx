@@ -1,9 +1,7 @@
-import styles from './all-applications.module.scss';
 import http from '@rfalabs-test/http';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { TabsContext } from '@rfalabs-test/contexts';
-import { TabInterface, ITabsContext } from '@rfalabs-test/types';
 import { AddIcon } from '@chakra-ui/icons';
 import {
   Table,
@@ -14,10 +12,10 @@ import {
   Td,
   TableContainer,
   Container,
-  Text,
   Center,
   Spinner,
   IconButton,
+  Heading,
 } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
@@ -64,13 +62,13 @@ export function AllApplications(props: AllApplicationsProps) {
   return (
     <Container
       maxW="container.lg"
-      bg="gray.300"
+      bg="gray.200"
       color="#262626"
       h="100%"
       w="100%"
     >
-      <Center>
-        <Text fontSize="4xl">All Applications</Text>
+      <Center p={4}>
+        <Heading>All Applications</Heading>
       </Center>
 
       {loading ? (
@@ -78,8 +76,8 @@ export function AllApplications(props: AllApplicationsProps) {
           <Spinner />
         </Center>
       ) : (
-        <TableContainer>
-          <Table variant="striped" colorScheme="blackAlpha">
+        <TableContainer marginTop={'50px'}>
+          <Table size="sm" variant="striped" colorScheme="blackAlpha">
             <Thead>
               <Tr>
                 <Th>ID</Th>

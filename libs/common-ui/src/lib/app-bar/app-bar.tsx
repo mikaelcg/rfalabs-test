@@ -2,7 +2,7 @@ import styles from './app-bar.module.scss';
 import logo from '../../assets/logo.png';
 import { useMemo, useContext } from 'react';
 import { TabsContext } from '@rfalabs-test/contexts';
-import { TabInterface, ITabsContext } from '@rfalabs-test/types';
+import { TabInterface } from '@rfalabs-test/types';
 import { useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -50,20 +50,20 @@ export function AppBar(props: AppBarProps) {
         justify="flex-start"
         align="center"
       >
-        <Box p={4}>
-          <Image boxSize="100px" objectFit="contain" src={logo} alt="RFA" />
+        <Box paddingLeft={4} paddingRight={4}>
+          <Image w={'100px'} objectFit="contain" src={logo} alt="RFA" />
         </Box>
 
         <Box w="100%">
-          <Tabs
-            size="lg"
-            variant="enclosed"
-            onChange={(index) => onChangeTab(index)}
-          >
+          <Tabs size="lg" variant="enclosed">
             <TabList>
-              {selectedTabs?.map((tab) => {
+              {selectedTabs?.map((tab, index) => {
                 return (
-                  <Tab bg="white" key={tab?.id}>
+                  <Tab
+                    bg="white"
+                    key={tab?.id}
+                    onClick={() => onChangeTab(index)}
+                  >
                     {tab?.label}
                   </Tab>
                 );
