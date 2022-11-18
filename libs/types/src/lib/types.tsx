@@ -4,6 +4,10 @@ export interface ApplicationInterface {
   date?: boolean;
   brokerSubmissionNotes?: string;
   address?: string;
+  subjectProperty?: string;
+  mortgageDetails?: string;
+  poolingBroker?: string;
+  broker?: string;
 }
 
 export interface IApplicationContext {

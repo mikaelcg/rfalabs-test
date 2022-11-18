@@ -12,11 +12,10 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Heading,
-  Stack,
-  Box,
-  StackDivider,
+  Tabs,
+  Tab,
+  TabList,
 } from '@chakra-ui/react';
 import http from '@rfalabs-test/http';
 import { AxiosResponse } from 'axios';
@@ -81,50 +80,50 @@ export function ApplicationDetail(props: ApplicationDetailProps) {
             </Grid>
 
             <Grid templateColumns="repeat(4, 1fr)" gap={6} marginTop={5}>
-              <GridItem w="100%" h="10" bg="blue.500">
+              <GridItem w="100%">
                 <Card bg="white">
                   <CardHeader>
                     <Heading size="md">Subject Property</Heading>
                   </CardHeader>
 
                   <CardBody>
-                    <Text>Subject Property</Text>
+                    <Text>{application?.subjectProperty ?? '-'}</Text>
                   </CardBody>
                 </Card>
               </GridItem>
 
-              <GridItem w="100%" h="10" bg="blue.500">
+              <GridItem w="100%">
                 <Card bg="white">
                   <CardHeader>
                     <Heading size="md">Mortgage Details</Heading>
                   </CardHeader>
 
                   <CardBody>
-                    <Text>Mortgage Details</Text>
+                    <Text>{application?.mortgageDetails ?? '-'}</Text>
                   </CardBody>
                 </Card>
               </GridItem>
 
-              <GridItem w="100%" h="10" bg="blue.500">
+              <GridItem w="100%">
                 <Card bg="white">
                   <CardHeader>
                     <Heading size="md">Pooling Broker</Heading>
                   </CardHeader>
 
                   <CardBody>
-                    <Text>Pooling Broker</Text>
+                    <Text>{application?.poolingBroker ?? '-'}</Text>
                   </CardBody>
                 </Card>
               </GridItem>
 
-              <GridItem w="100%" h="10" bg="blue.500">
+              <GridItem w="100%">
                 <Card bg="white">
                   <CardHeader>
                     <Heading size="md">Broker</Heading>
                   </CardHeader>
 
                   <CardBody>
-                    <Text>Broker</Text>
+                    <Text>{application?.broker ?? '-'}</Text>
                   </CardBody>
                 </Card>
               </GridItem>
@@ -141,14 +140,26 @@ export function ApplicationDetail(props: ApplicationDetailProps) {
             w="100%"
           >
             <Flex
-              justify={'center'}
-              align={'center'}
+              justify={'start'}
+              align={'start'}
               direction="column"
               h="100%"
               w="100%"
             >
-              <Text> Supplementary Data</Text>
-              <Text>Working Area</Text>
+              <Tabs size="lg" variant="enclosed" marginTop={5}>
+                <TabList>
+                  <Tab bg="white">Decisions</Tab>
+                  <Tab bg="white">VTR</Tab>
+                  <Tab bg="white">Insurance</Tab>
+                  <Tab bg="white">Documents</Tab>
+                  <Tab bg="white">Conditions</Tab>
+                  <Tab bg="white">Tick Sheet</Tab>
+                  <Tab bg="white">Credit Burean</Tab>
+                  <Tab bg="white">E-Mail</Tab>
+                  <Tab bg="white">Notes</Tab>
+                  <Tab bg="white">Deal Summary</Tab>
+                </TabList>
+              </Tabs>
             </Flex>
           </Container>
         </>
