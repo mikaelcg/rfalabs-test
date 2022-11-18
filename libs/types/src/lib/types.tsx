@@ -2,11 +2,13 @@ export interface ApplicationInterface {
   id?: number;
   description?: string;
   date?: boolean;
+  brokerSubmissionNotes?: string;
+  address?: string;
 }
 
 export interface IApplicationContext {
   application?: ApplicationInterface;
-  toggleApplication?: (v: any) => void;
+  toggleApplication?: (v: ApplicationInterface) => void;
 }
 
 export interface TabInterface {

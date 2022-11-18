@@ -24,8 +24,8 @@ export function InsightsBar(props: InsightsBarProps) {
         <Flex p={4}>
           <Box ml="3">
             <Text fontWeight="bold">{application?.description}</Text>
-            <Text fontSize="sm">1 Main Street Miltons, ONT</Text>
-            <Text fontSize="sm">Dec 1, 2022</Text>
+            <Text fontSize="sm">{application?.address}</Text>
+            <Text fontSize="sm">{application?.date}</Text>
           </Box>
         </Flex>
       </Box>
