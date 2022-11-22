@@ -1,6 +1,6 @@
 # RFA Labs Test
 
-- Projeto created with NX/React
+- Project created with NX/React
 
 https://rfalabs-test.vercel.app/
 
